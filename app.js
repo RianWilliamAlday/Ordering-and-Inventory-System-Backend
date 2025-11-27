@@ -1,5 +1,8 @@
 import express from "express";
 import 'dotenv/config.js';
+import orderRoutes from "./routers/OrderRoutes.js";
+import userRoutes from "./routers/UserRoutes.js";
+import cors from "cors";
                                                                                    
 
 const app = express();
@@ -15,7 +18,7 @@ try {
     console.log(e);
 }
 
+app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
-
-
-
+export default orderRoutes;
