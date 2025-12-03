@@ -1,4 +1,4 @@
-import * as InventoryController from '../controllers/InventoryController.js';
+import * as InventoryController from '../controllers/InventoryControler.js';
 import express from 'express';
 
 const inventoryRoutes = express.Router();
