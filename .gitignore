@@ -1,3 +1,9 @@
 node_modules/
 .vscode/
 .env
+controllers/HistoryController.js
+controllers/MenuController.js
+models/HistoryModel.js
+models/MenuModel.js
+routers/HistoryRoutes.js
+routers/MenuRoutes.js

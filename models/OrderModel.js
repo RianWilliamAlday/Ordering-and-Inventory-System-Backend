@@ -9,11 +9,11 @@ export const getOrders = async () => {
 
 export const insertOrders = async (order_date, ordered_items, table_number, quantity, total, payment_method) => {
     const [result] = await pool.query(
-        "INSERT INTO tblorders (order_date, ordered_items, table_number, quantity, total, payment_method) VALUES(?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO tblorders (order_date, ordered_items, table_number, quantity, total, payment_method) VALUES(?, ?, ?, ?, ?, ?)",
         [order_date, ordered_items, table_number, quantity, total, payment_method]
     );
-    return result.insertId;                     
-}   
+    return result.insertId;
+}
 
 export const completeOrder = async (orderId) => {
     await pool.query(
