@@ -9,6 +9,26 @@ export const getUserByRole = async (role) => {
     return user[0]; 
 };
 
+export const createUser = async (role, password) => {
+    if (!role) {
+        throw new Error("Role is required (owner or cashier)");
+    }
+
+    if (!password) {
+        throw new Error("Password is required");
+    }
+
+    const salt = bcrypt.genSaltSync(10);
+    const hashed = bcrypt.hashSync(password, salt);
+
+    const [result] = await pool.query(
+        "INSERT INTO tbluser(role, password) VALUES(?, ?)",
+        [role, hashed]
+    );
+
+    return result.insertId;
+};
+
 export const login = async (role, password) => {
     if (!role || !password) {
         throw new Error("Role and password required");
