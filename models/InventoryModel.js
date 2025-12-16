@@ -5,18 +5,18 @@ export const getStocks = async () =>{
     return rows;
 }
 
-export const addStocks = async (category, stock) => {
+export const addStocks = async (category, stocks) => {
     const [result] = await pool.query(
-        "INSERT INTO tblinventory (category, stock) VALUES(?, ?)",
-        [category, stock]
+        "INSERT INTO tblinventory (category, stocks) VALUES(?, ?)",
+        [category, stocks]
     );
     return result.insertId;                     
 }
 
-export const updateStocks = async (category, stock, stockId) => {
+export const updateStocks = async (category, stocks, stockId) => {
     const [result] = await pool.query(
-        "UPDATE tblinventory SET category= ?, stock= ? WHERE id= ?",
-        [category, stock, stockId]
+        "UPDATE tblinventory SET category= ?, stocks= ? WHERE id= ?",
+        [category, stocks, stockId]
     );
     return result.affectedRows;
 }

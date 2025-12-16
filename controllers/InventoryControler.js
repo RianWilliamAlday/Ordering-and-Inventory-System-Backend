@@ -14,9 +14,9 @@ export const fetchStocks = async (req, res ) =>{
 }
 
 export const addStocks = async (req, res) => {
-    const {category, stock} = req.body
+    const {category, stocks} = req.body
     try{
-        const stockId = await InventoryModel.addStocks(category, stock);
+        const stockId = await InventoryModel.addStocks(category, stocks);
         res.status(200).json({success: true, message : stockId})
     }catch(e){
         console.log(e)
@@ -25,11 +25,11 @@ export const addStocks = async (req, res) => {
 }
 
 export const editStocks = async (req, res) =>{
-    const {category, stock} = req.body
+    const {category, stocks} = req.body
     const {stockId} = req.params
 
     try{                                                                                                                                                                    
-        const updateId = await InventoryModel.updateStocks(category, stock, stockId);
+        const updateId = await InventoryModel.updateStocks(category, stocks, stockId);
         res.status(200).json({success: true, message: updateId});
     }catch(e){
         console.log(e)
